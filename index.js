@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 
 const server = express();
@@ -5,7 +6,8 @@ const server = express();
 server.use(express.json());
 
 server.get('/', (req, res) => {
-  res.status(200).json({ message: 'server up' });
+  const message = process.env.MESSAGE || 'hello from code';
+  res.status(200).json({ message });
 });
 
 
